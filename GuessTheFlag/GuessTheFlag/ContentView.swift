@@ -9,29 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
 	var body: some View {
-		ZStack {
-			// Color can be treated as its own View
-			Color.secondary
-				.frame(minWidth: 200, maxWidth: .infinity, maxHeight: 200)
-			Color(red: 1, green: 0.8, blue: 0)
-				.frame(minWidth: 200, minHeight: 200)
+		VStack {
+			LinearGradient(
+				stops: [
+					.init(color: .white, location: 0.45),
+					.init(color: .mint, location: 0.55),
+				],
+				startPoint: .top,
+				endPoint: .bottom
+			)
 
-			Text("Your Content")
-		}
-		.ignoresSafeArea()  // draws under dynamic island and status bar
+			RadialGradient(
+				colors: [.mint, .black],
+				center: .center,
+				startRadius: 20,
+				endRadius: 200
+			)
 
-		// Vibrancy
-		ZStack {
-			VStack(spacing: 0) {
-				Color.red
-				Color.blue
-			}
+			AngularGradient(
+				colors: [
+					.indigo, .blue, .green, .yellow, .orange, .red,
+				],
+				center: .center
+			)
 
-			Text("Hello, World!")
-				.foregroundStyle(.secondary)
-				.padding(50)
-				.background(.ultraThinMaterial)
-				.clipShape(.circle)
+			Text("Your content")
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.foregroundStyle(.white)
+				.background(.red.gradient)
 		}
 		.ignoresSafeArea()
 	}
